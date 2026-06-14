@@ -476,16 +476,16 @@ export default function Home({ setActivePage, setSelectedProductSlug, addToCart,
       </section>
 
       {/* 5. FEATURED PRODUCTS (Gourmet Collections) */}
-      <section className="py-16 md:py-24 relative z-10">
+      <section className="py-12 md:py-20 relative z-10">
         <div className="container">
-          <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-16 gap-6 text-left">
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-10 gap-4">
             <div>
-              <span className="text-xs uppercase tracking-[0.25em] text-gold font-semibold" style={{ color: 'hsl(var(--color-primary-gold))' }}>Gourmet Shop</span>
-              <h2 className="text-3xl md:text-5xl font-serif font-medium mt-2">Limited Batch Crops</h2>
+              <span className="text-xs uppercase tracking-[0.2em] text-gold font-semibold" style={{ color: 'hsl(var(--color-primary-gold))' }}>Gourmet Shop</span>
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-serif font-medium mt-2">Limited Batch Crops</h2>
             </div>
             <button
               onClick={() => setActivePage('products')}
-              className="btn btn-secondary text-xs tracking-wider px-6 py-3 font-semibold border-white/10 hover:border-gold/30 hover:bg-white/5 flex items-center gap-1.5 cursor-pointer"
+              className="btn btn-secondary text-xs tracking-wider px-5 py-2.5 font-semibold border-white/10 hover:border-gold/30 hover:bg-white/5 flex items-center gap-1.5 cursor-pointer"
             >
               View Full Catalog <ArrowRight className="w-4 h-4" />
             </button>
@@ -499,7 +499,7 @@ export default function Home({ setActivePage, setSelectedProductSlug, addToCart,
           ) : error ? (
             <div className="text-center text-primary-crimson py-6">{error}</div>
           ) : (
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {featuredProducts.map((product) => {
                 const discount = product.compare_at_price
                   ? Math.round(((product.compare_at_price - product.price) / product.compare_at_price) * 100)
@@ -508,31 +508,26 @@ export default function Home({ setActivePage, setSelectedProductSlug, addToCart,
                 return (
                   <div
                     key={product.id}
-                    className="glass-card-premium relative overflow-hidden flex flex-col h-full group border border-white/5"
+                    className="glass-card-premium relative overflow-hidden flex flex-col h-full group border border-white/5 rounded-xl"
                   >
 
                     {/* Badge Overlay (Top Left) */}
                     {product.badge && (
-                      <span className="absolute top-4 left-4 z-20 bg-black/80 backdrop-blur-md px-3 py-1 border border-white/10 rounded-full text-[9px] uppercase tracking-[0.1em] font-bold text-gold" style={{ color: 'hsl(var(--color-primary-gold))' }}>
+                      <span className="absolute top-3 left-3 z-20 bg-black/80 backdrop-blur-md px-2.5 py-1 border border-white/10 rounded-full text-[9px] uppercase tracking-wide font-bold text-gold" style={{ color: 'hsl(var(--color-primary-gold))' }}>
                         {product.badge}
                       </span>
                     )}
 
-                    {/* Batch Code Overlay (Top Right) */}
-                    <span className="absolute top-4 right-4 z-20 bg-white/5 border border-white/10 px-2 py-0.5 rounded text-[8px] tracking-wider text-text-muted select-none">
-                      BATCH #AF-{product.id + 2026}
-                    </span>
-
-                    {/* Product Image and Hover Quick Add */}
+                    {/* Product Image */}
                     <div
                       onClick={() => handleProductClick(product.slug)}
-                      className="h-64 w-full relative flex items-center justify-center cursor-pointer overflow-hidden border-b border-white/5 bg-bg-dark/80"
+                      className="h-56 w-full relative flex items-center justify-center cursor-pointer overflow-hidden bg-bg-dark"
                     >
                       {product.image ? (
                         <img
                           src={DirectusService.getImageUrl(product.image)}
                           alt={product.name}
-                          className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                          className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                         />
                       ) : (
                         <div
@@ -541,24 +536,24 @@ export default function Home({ setActivePage, setSelectedProductSlug, addToCart,
                         ></div>
                       )}
 
-                      {/* Quick Add overlay panel on hover */}
-                      <div className="absolute inset-x-0 bottom-0 p-4 bg-gradient-to-t from-bg-dark/95 via-bg-dark/90 to-transparent translate-y-full group-hover:translate-y-0 transition-transform duration-300 flex justify-center z-20">
+                      {/* Quick Add overlay */}
+                      <div className="absolute inset-x-0 bottom-0 p-3 bg-gradient-to-t from-bg-dark via-bg-dark/80 to-transparent translate-y-full group-hover:translate-y-0 transition-transform duration-200 flex justify-center z-20">
                         <button
                           onClick={(e) => {
                             e.stopPropagation();
                             addToCart(product, 1);
                           }}
-                          className="btn-luxury w-full py-2.5 px-4 text-xs font-bold tracking-wider cursor-pointer"
+                          className="btn-luxury w-full py-2 px-4 text-xs font-bold tracking-wider cursor-pointer"
                         >
-                          <ShoppingCart className="w-3.5 h-3.5 mr-1" /> Quick Add to Bag
+                          <ShoppingCart className="w-3.5 h-3.5 mr-1" /> Quick Add
                         </button>
                       </div>
                     </div>
 
                     {/* Product Details */}
-                    <div className="p-6 flex flex-col flex-grow text-left gap-2 relative z-10">
+                    <div className="p-4 flex flex-col flex-grow gap-2">
                       <div className="flex items-center justify-between">
-                        <span className="text-[10px] uppercase tracking-[0.2em] text-gold font-bold" style={{ color: 'hsl(var(--color-primary-gold))' }}>
+                        <span className="text-[10px] uppercase tracking-widest text-gold font-semibold" style={{ color: 'hsl(var(--color-primary-gold))' }}>
                           {product.origin}
                         </span>
 
@@ -579,16 +574,16 @@ export default function Home({ setActivePage, setSelectedProductSlug, addToCart,
 
                       <h4
                         onClick={() => handleProductClick(product.slug)}
-                        className="text-lg font-serif font-medium text-text-primary hover:text-gold cursor-pointer transition-colors duration-300 line-clamp-1"
+                        className="text-base font-serif font-medium text-text-primary hover:text-gold cursor-pointer transition-colors line-clamp-1"
                       >
                         {product.name}
                       </h4>
 
-                      <div className="flex items-center justify-between mt-auto pt-4 border-t border-white/5">
+                      <div className="flex items-center justify-between mt-auto pt-3 border-t border-white/5">
                         <div className="flex items-baseline gap-2">
-                          <span className="text-xl font-medium text-text-primary">{product.price}</span>
+                          <span className="text-lg font-semibold text-text-primary">Rs.{product.price}</span>
                           {product.compare_at_price && (
-                            <span className="text-xs text-text-muted line-through">{product.compare_at_price}</span>
+                            <span className="text-xs text-text-muted line-through">Rs.{product.compare_at_price}</span>
                           )}
                         </div>
 
@@ -597,7 +592,7 @@ export default function Home({ setActivePage, setSelectedProductSlug, addToCart,
                           className="text-xs font-semibold text-gold hover:text-text-primary transition-colors flex items-center gap-1 cursor-pointer"
                           style={{ color: 'hsl(var(--color-primary-gold))' }}
                         >
-                          View Details <ArrowRight className="w-3 h-3" />
+                          View <ArrowRight className="w-3 h-3" />
                         </button>
                       </div>
                     </div>
@@ -610,37 +605,39 @@ export default function Home({ setActivePage, setSelectedProductSlug, addToCart,
       </section>
 
       {/* 6. GLOW OF TRUST (Testimonials Slider) */}
-      <section className="container py-12 md:py-24 relative z-10">
-        <div className="relative glass-card-premium p-6 sm:p-10 md:p-16 text-center overflow-hidden border border-white/5 bg-bg-panel/20 backdrop-blur-md">
+      <section className="container py-16 md:py-24 relative z-10">
+        <div className="relative glass-card-premium p-8 sm:p-12 md:p-16 text-center overflow-hidden border border-white/5 bg-bg-panel/20 backdrop-blur-md mx-auto max-w-4xl rounded-xl">
           {/* Ambient Glow */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] sm:w-[350px] sm:h-[350px] luxury-glow-gold rounded-full opacity-10 pointer-events-none"></div>
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] luxury-glow-gold rounded-full opacity-10 pointer-events-none"></div>
 
           {/* Giant Quote Icon Background */}
-          <div className="absolute top-4 left-4 sm:left-8 font-serif text-[6rem] sm:text-[12rem] text-gold/5 select-none leading-none pointer-events-none">
+          <div className="absolute top-2 left-4 font-serif text-[4rem] sm:text-[6rem] text-gold/5 select-none leading-none pointer-events-none">
             "
           </div>
 
-          <div className="relative z-10 max-w-3xl mx-auto flex flex-col gap-4 sm:gap-6">
-            <span className="text-xs uppercase tracking-[0.25em] text-gold font-semibold" style={{ color: 'hsl(var(--color-primary-gold))' }}>Testimonials</span>
-            <h2 className="text-2xl sm:text-3xl md:text-5xl font-serif font-medium mt-1 mb-2">Glow of Trust</h2>
+          <div className="relative z-10 flex flex-col items-center gap-6">
+            <div className="flex flex-col items-center gap-2">
+              <span className="text-xs uppercase tracking-[0.2em] text-gold font-semibold" style={{ color: 'hsl(var(--color-primary-gold))' }}>Testimonials</span>
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-serif font-medium">Glow of Trust</h2>
+            </div>
 
             {/* Slide Area */}
-            <div className="min-h-[180px] sm:min-h-[160px] flex items-center justify-center py-4">
-              <div className="animate-fade-in-up flex flex-col items-center px-2">
+            <div className="w-full flex flex-col items-center">
+              <div key={activeTestimonial} className="animate-fade-in-up flex flex-col items-center max-w-2xl mx-auto">
 
                 {/* Stars */}
-                <div className="flex gap-1 mb-4 sm:mb-6">
+                <div className="flex gap-1 mb-4">
                   {[...Array(testimonials[activeTestimonial].stars)].map((_, i) => (
                     <Star
                       key={i}
-                      className="w-4 h-4 sm:w-4.5 sm:h-4.5 fill-gold text-gold stroke-none"
+                      className="w-4 h-4 fill-gold text-gold"
                       style={{ fill: 'hsl(var(--color-primary-gold))' }}
                     />
                   ))}
                 </div>
 
                 {/* Quote Text */}
-                <p className="text-base sm:text-lg md:text-xl font-serif text-text-primary italic leading-relaxed font-light mb-6 sm:mb-8 max-w-2xl text-center">
+                <p className="text-base sm:text-lg font-serif text-text-primary italic leading-relaxed font-light mb-6 text-center px-4">
                   "{testimonials[activeTestimonial].quote}"
                 </p>
 
@@ -650,41 +647,41 @@ export default function Home({ setActivePage, setSelectedProductSlug, addToCart,
                 </h5>
 
                 {/* Author Role */}
-                <p className="text-[10px] sm:text-xs text-text-muted mt-0.5 tracking-wider font-light text-center">
+                <p className="text-xs text-text-muted mt-1 font-light text-center">
                   {testimonials[activeTestimonial].role}
                 </p>
               </div>
             </div>
 
             {/* Slider Controls */}
-            <div className="flex items-center justify-center gap-4 sm:gap-6 mt-4 sm:mt-6">
+            <div className="flex items-center justify-center gap-4 mt-4">
               <button
                 onClick={prevTestimonial}
-                className="p-2.5 sm:p-3 rounded-full border border-white/5 hover:border-gold/30 hover:bg-white/5 text-text-secondary hover:text-gold transition-all duration-300 cursor-pointer"
+                className="p-2 rounded-full border border-white/10 hover:border-gold/40 hover:bg-white/5 text-text-secondary hover:text-gold transition-colors"
                 aria-label="Previous testimonial"
               >
-                <ChevronLeft className="w-4 h-4" />
+                <ChevronLeft className="w-5 h-5" />
               </button>
 
               {/* Dot Indicators */}
-              <div className="flex gap-2 sm:gap-2.5">
+              <div className="flex gap-2">
                 {testimonials.map((_, index) => (
                   <button
                     key={index}
                     onClick={() => setActiveTestimonial(index)}
-                    className={`w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full transition-all duration-300 cursor-pointer ${index === activeTestimonial ? 'bg-gold w-5 sm:w-6' : 'bg-white/10 hover:bg-white/25'}`}
-                    style={{ backgroundColor: index === activeTestimonial ? 'hsl(var(--color-primary-gold))' : '' }}
+                    className={`h-2 rounded-full transition-all ${index === activeTestimonial ? 'w-6 bg-gold' : 'w-2 bg-white/20 hover:bg-white/30'}`}
+                    style={index === activeTestimonial ? { backgroundColor: 'hsl(var(--color-primary-gold))' } : {}}
                     aria-label={`Go to testimonial ${index + 1}`}
-                  ></button>
+                  />
                 ))}
               </div>
 
               <button
                 onClick={nextTestimonial}
-                className="p-2.5 sm:p-3 rounded-full border border-white/5 hover:border-gold/30 hover:bg-white/5 text-text-secondary hover:text-gold transition-all duration-300 cursor-pointer"
+                className="p-2 rounded-full border border-white/10 hover:border-gold/40 hover:bg-white/5 text-text-secondary hover:text-gold transition-colors"
                 aria-label="Next testimonial"
               >
-                <ChevronRight className="w-4 h-4" />
+                <ChevronRight className="w-5 h-5" />
               </button>
             </div>
           </div>

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { DirectusService } from '../services/DirectusService';
-import { User, LogIn, Lock, Mail, Phone, Sparkles, Loader2, AlertCircle } from 'lucide-react';
+import { User, LogIn, Lock, Mail, Phone, Sparkles, Loader as Loader2, CircleAlert as AlertCircle } from 'lucide-react';
 
 export default function Auth({ onLoginSuccess, setActivePage }) {
   const [activeTab, setActiveTab] = useState('login'); // login | signup
@@ -66,46 +66,45 @@ export default function Auth({ onLoginSuccess, setActivePage }) {
   };
 
   return (
-    <div className="container pt-20 md:pt-28 lg:pt-32 pb-20 md:pb-28 lg:pb-32 flex items-center justify-center animate-fade-in-up font-sans text-left">
-      <div 
-        className="w-full max-w-lg glass-card p-10 md:p-12 border border-white/5 shadow-[0_0_50px_rgba(217,160,67,0.03)] relative rounded-[4px]" 
+    <div className="min-h-screen flex items-center justify-center pt-20 pb-20 animate-fade-in-up font-sans">
+      <div
+        className="w-full max-w-md mx-4 sm:mx-auto glass-card p-6 sm:p-10 border border-white/5 shadow-lg relative rounded-lg"
         style={{ background: 'hsla(var(--color-bg-panel) / 0.85)', backdropFilter: 'blur(20px)', WebkitBackdropFilter: 'blur(20px)' }}
       >
-        
+
         {/* Premium Brand Header */}
-        <div className="flex flex-col items-center gap-2 mb-10 text-center">
-          <div 
-            className="w-16 h-16 rounded-full bg-gold/5 border border-gold/15 flex items-center justify-center text-gold mb-3 relative group"
+        <div className="flex flex-col items-center gap-2 mb-8 text-center">
+          <div
+            className="w-14 h-14 rounded-full bg-gold/5 border border-gold/15 flex items-center justify-center text-gold mb-2 relative"
             style={{ color: 'hsl(var(--color-primary-gold))', borderColor: 'hsl(var(--color-primary-gold) / 0.15)' }}
           >
-            <div className="absolute inset-0 rounded-full bg-gold/5 blur-md opacity-75"></div>
-            <Sparkles className="w-8 h-8 relative z-10 animate-pulse text-gold" style={{ color: 'hsl(var(--color-primary-gold))' }} />
+            <Sparkles className="w-7 h-7 relative z-10 animate-pulse text-gold" style={{ color: 'hsl(var(--color-primary-gold))' }} />
           </div>
-          <span className="text-[10px] uppercase tracking-[0.3em] font-bold text-gold/80" style={{ color: 'hsl(var(--color-primary-gold) / 0.8)' }}>
+          <span className="text-[10px] uppercase tracking-[0.2em] font-bold text-gold/80" style={{ color: 'hsl(var(--color-primary-gold) / 0.8)' }}>
             Secure Portal
           </span>
-          <h2 className="text-3xl font-serif font-bold text-text-primary mt-2">Saffronbasket Area</h2>
-          <p className="text-xs text-text-secondary/80 max-w-xs mt-2 leading-relaxed">
-            Access your secure customer account, track sourcing status, and view organic orders.
+          <h2 className="text-2xl sm:text-3xl font-serif font-bold text-text-primary mt-1">Customer Account</h2>
+          <p className="text-xs text-text-secondary/80 max-w-xs mt-1 leading-relaxed">
+            Sign in to track orders, or create an account.
           </p>
         </div>
 
         {/* Toggle Headers */}
-        <div className="flex border-b border-white/10 mb-10">
+        <div className="flex border-b border-white/10 mb-8">
           <button
             onClick={() => {
               setActiveTab('login');
               setErrorMessage('');
               setSuccessMessage('');
             }}
-            className={`flex-grow pb-4 text-center font-serif text-lg font-bold border-b-2 transition-all relative ${
-              activeTab === 'login' 
-                ? 'text-gold font-semibold font-bold border-b-2' 
+            className={`flex-1 pb-3 text-center font-serif text-base font-semibold border-b-2 transition-all ${
+              activeTab === 'login'
+                ? 'text-gold border-gold'
                 : 'border-transparent text-text-secondary/60 hover:text-text-secondary'
             }`}
             style={activeTab === 'login' ? { borderBottomColor: 'hsl(var(--color-primary-gold))', color: 'hsl(var(--color-primary-gold))' } : {}}
           >
-            Customer Login
+            Login
           </button>
           <button
             onClick={() => {
@@ -113,14 +112,14 @@ export default function Auth({ onLoginSuccess, setActivePage }) {
               setErrorMessage('');
               setSuccessMessage('');
             }}
-            className={`flex-grow pb-4 text-center font-serif text-lg font-bold border-b-2 transition-all relative ${
-              activeTab === 'signup' 
-                ? 'text-gold font-semibold font-bold border-b-2' 
+            className={`flex-1 pb-3 text-center font-serif text-base font-semibold border-b-2 transition-all ${
+              activeTab === 'signup'
+                ? 'text-gold border-gold'
                 : 'border-transparent text-text-secondary/60 hover:text-text-secondary'
             }`}
             style={activeTab === 'signup' ? { borderBottomColor: 'hsl(var(--color-primary-gold))', color: 'hsl(var(--color-primary-gold))' } : {}}
           >
-            Create Account
+            Sign Up
           </button>
         </div>
 
@@ -141,160 +140,163 @@ export default function Auth({ onLoginSuccess, setActivePage }) {
 
         {/* LOGIN FORM */}
         {activeTab === 'login' ? (
-          <form onSubmit={handleLogin} className="flex flex-col gap-6">
-            <div className="input-group">
-              <label className="input-label text-xs tracking-wider">Email Address</label>
+          <form onSubmit={handleLogin} className="flex flex-col gap-5">
+            <div>
+              <label className="block text-xs tracking-wider text-text-secondary mb-2 uppercase">Email</label>
               <div className="relative">
-                <input 
-                  type="email" 
+                <input
+                  type="email"
                   required
                   placeholder="john@example.com"
                   value={loginEmail}
                   onChange={(e) => setLoginEmail(e.target.value)}
-                  className="input-field w-full pl-12 h-12 rounded-[4px] bg-white/[0.01] border-white/10 hover:border-gold/30 focus:border-gold focus:ring-1 focus:ring-gold/20 transition-all font-sans text-sm"
+                  className="w-full pl-11 pr-4 py-3 rounded-lg bg-white/5 border border-white/10 focus:border-gold focus:outline-none transition-all text-sm text-text-primary placeholder-text-muted"
+                  style={{ borderColor: 'var(var(--color-primary-gold), transparent)' }}
                   disabled={loading}
                 />
-                <Mail className="w-[18px] h-[18px] text-text-muted absolute left-4 top-1/2 -translate-y-1/2" />
+                <Mail className="w-4 h-4 text-text-muted absolute left-4 top-1/2 -translate-y-1/2" />
               </div>
             </div>
 
-            <div className="input-group">
-              <div className="flex justify-between items-center">
-                <label className="input-label text-xs tracking-wider">Password</label>
-              </div>
+            <div>
+              <label className="block text-xs tracking-wider text-text-secondary mb-2 uppercase">Password</label>
               <div className="relative">
-                <input 
-                  type="password" 
+                <input
+                  type="password"
                   required
-                  placeholder="••••••••"
+                  placeholder="Enter password"
                   value={loginPassword}
                   onChange={(e) => setLoginPassword(e.target.value)}
-                  className="input-field w-full pl-12 h-12 rounded-[4px] bg-white/[0.01] border-white/10 hover:border-gold/30 focus:border-gold focus:ring-1 focus:ring-gold/20 transition-all font-sans text-sm"
+                  className="w-full pl-11 pr-4 py-3 rounded-lg bg-white/5 border border-white/10 focus:border-gold focus:outline-none transition-all text-sm text-text-primary placeholder-text-muted"
                   disabled={loading}
                 />
-                <Lock className="w-[18px] h-[18px] text-text-muted absolute left-4 top-1/2 -translate-y-1/2" />
+                <Lock className="w-4 h-4 text-text-muted absolute left-4 top-1/2 -translate-y-1/2" />
               </div>
             </div>
 
-            <button 
-              type="submit" 
-              className="btn btn-gold h-12 w-full mt-4 px-8 flex items-center justify-center gap-2.5 text-sm font-semibold tracking-wider uppercase transition-all rounded-[4px]"
+            <button
+              type="submit"
+              className="mt-2 py-3 px-6 rounded-lg font-semibold text-sm uppercase tracking-wider transition-all flex items-center justify-center gap-2 w-full"
               style={{ backgroundColor: 'hsl(var(--color-primary-gold))', color: 'hsl(var(--color-bg-dark))' }}
               disabled={loading}
             >
               {loading ? (
                 <Loader2 className="w-5 h-5 animate-spin" />
               ) : (
-                <LogIn className="w-[18px] h-[18px]" />
+                <>
+                  <LogIn className="w-4 h-4" />
+                  Sign In
+                </>
               )}
-              Sign In to Saffronbasket
             </button>
           </form>
         ) : (
           // SIGNUP FORM
-          <form onSubmit={handleSignup} className="flex flex-col gap-6">
-            
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div className="input-group mb-0">
-                <label className="input-label text-xs tracking-wider">First Name</label>
+          <form onSubmit={handleSignup} className="flex flex-col gap-4">
+
+            <div className="grid grid-cols-2 gap-3">
+              <div>
+                <label className="block text-xs tracking-wider text-text-secondary mb-2 uppercase">First Name</label>
                 <div className="relative">
-                  <input 
-                    type="text" 
+                  <input
+                    type="text"
                     required
                     placeholder="John"
                     value={firstName}
                     onChange={(e) => setFirstName(e.target.value)}
-                    className="input-field w-full pl-12 h-12 rounded-[4px] bg-white/[0.01] border-white/10 hover:border-gold/30 focus:border-gold focus:ring-1 focus:ring-gold/20 transition-all font-sans text-sm"
+                    className="w-full pl-11 pr-3 py-3 rounded-lg bg-white/5 border border-white/10 focus:border-gold focus:outline-none transition-all text-sm text-text-primary placeholder-text-muted"
                     disabled={loading}
                   />
-                  <User className="w-[18px] h-[18px] text-text-muted absolute left-4 top-1/2 -translate-y-1/2" />
+                  <User className="w-4 h-4 text-text-muted absolute left-4 top-1/2 -translate-y-1/2" />
                 </div>
               </div>
-              <div className="input-group mb-0">
-                <label className="input-label text-xs tracking-wider">Last Name</label>
+              <div>
+                <label className="block text-xs tracking-wider text-text-secondary mb-2 uppercase">Last Name</label>
                 <div className="relative">
-                  <input 
-                    type="text" 
+                  <input
+                    type="text"
                     required
                     placeholder="Doe"
                     value={lastName}
                     onChange={(e) => setLastName(e.target.value)}
-                    className="input-field w-full pl-12 h-12 rounded-[4px] bg-white/[0.01] border-white/10 hover:border-gold/30 focus:border-gold focus:ring-1 focus:ring-gold/20 transition-all font-sans text-sm"
+                    className="w-full pl-11 pr-3 py-3 rounded-lg bg-white/5 border border-white/10 focus:border-gold focus:outline-none transition-all text-sm text-text-primary placeholder-text-muted"
                     disabled={loading}
                   />
-                  <User className="w-[18px] h-[18px] text-text-muted absolute left-4 top-1/2 -translate-y-1/2" />
+                  <User className="w-4 h-4 text-text-muted absolute left-4 top-1/2 -translate-y-1/2" />
                 </div>
               </div>
             </div>
 
-            <div className="input-group">
-              <label className="input-label text-xs tracking-wider">Email Address</label>
+            <div>
+              <label className="block text-xs tracking-wider text-text-secondary mb-2 uppercase">Email</label>
               <div className="relative">
-                <input 
-                  type="email" 
+                <input
+                  type="email"
                   required
                   placeholder="john@example.com"
                   value={signupEmail}
                   onChange={(e) => setSignupEmail(e.target.value)}
-                  className="input-field w-full pl-12 h-12 rounded-[4px] bg-white/[0.01] border-white/10 hover:border-gold/30 focus:border-gold focus:ring-1 focus:ring-gold/20 transition-all font-sans text-sm"
+                  className="w-full pl-11 pr-4 py-3 rounded-lg bg-white/5 border border-white/10 focus:border-gold focus:outline-none transition-all text-sm text-text-primary placeholder-text-muted"
                   disabled={loading}
                 />
-                <Mail className="w-[18px] h-[18px] text-text-muted absolute left-4 top-1/2 -translate-y-1/2" />
+                <Mail className="w-4 h-4 text-text-muted absolute left-4 top-1/2 -translate-y-1/2" />
               </div>
             </div>
 
-            <div className="input-group">
-              <label className="input-label text-xs tracking-wider">Phone Number</label>
+            <div>
+              <label className="block text-xs tracking-wider text-text-secondary mb-2 uppercase">Phone</label>
               <div className="relative">
-                <input 
-                  type="tel" 
+                <input
+                  type="tel"
                   required
                   placeholder="+1 (555) 000-0000"
                   value={phone}
                   onChange={(e) => setPhone(e.target.value)}
-                  className="input-field w-full pl-12 h-12 rounded-[4px] bg-white/[0.01] border-white/10 hover:border-gold/30 focus:border-gold focus:ring-1 focus:ring-gold/20 transition-all font-sans text-sm"
+                  className="w-full pl-11 pr-4 py-3 rounded-lg bg-white/5 border border-white/10 focus:border-gold focus:outline-none transition-all text-sm text-text-primary placeholder-text-muted"
                   disabled={loading}
                 />
-                <Phone className="w-[18px] h-[18px] text-text-muted absolute left-4 top-1/2 -translate-y-1/2" />
+                <Phone className="w-4 h-4 text-text-muted absolute left-4 top-1/2 -translate-y-1/2" />
               </div>
             </div>
 
-            <div className="input-group">
-              <label className="input-label text-xs tracking-wider">Password</label>
+            <div>
+              <label className="block text-xs tracking-wider text-text-secondary mb-2 uppercase">Password</label>
               <div className="relative">
-                <input 
-                  type="password" 
+                <input
+                  type="password"
                   required
-                  placeholder="Minimum 6 characters"
+                  placeholder="Min 6 characters"
                   minLength="6"
                   value={signupPassword}
                   onChange={(e) => setSignupPassword(e.target.value)}
-                  className="input-field w-full pl-12 h-12 rounded-[4px] bg-white/[0.01] border-white/10 hover:border-gold/30 focus:border-gold focus:ring-1 focus:ring-gold/20 transition-all font-sans text-sm"
+                  className="w-full pl-11 pr-4 py-3 rounded-lg bg-white/5 border border-white/10 focus:border-gold focus:outline-none transition-all text-sm text-text-primary placeholder-text-muted"
                   disabled={loading}
                 />
-                <Lock className="w-[18px] h-[18px] text-text-muted absolute left-4 top-1/2 -translate-y-1/2" />
+                <Lock className="w-4 h-4 text-text-muted absolute left-4 top-1/2 -translate-y-1/2" />
               </div>
             </div>
 
-            <button 
-              type="submit" 
-              className="btn btn-gold h-12 w-full mt-4 px-8 flex items-center justify-center gap-2.5 text-sm font-semibold tracking-wider uppercase transition-all rounded-[4px]"
+            <button
+              type="submit"
+              className="mt-2 py-3 px-6 rounded-lg font-semibold text-sm uppercase tracking-wider transition-all flex items-center justify-center gap-2 w-full"
               style={{ backgroundColor: 'hsl(var(--color-primary-gold))', color: 'hsl(var(--color-bg-dark))' }}
               disabled={loading}
             >
               {loading ? (
                 <Loader2 className="w-5 h-5 animate-spin" />
               ) : (
-                <User className="w-[18px] h-[18px]" />
+                <>
+                  <User className="w-4 h-4" />
+                  Create Account
+                </>
               )}
-              Register Customer Account
             </button>
           </form>
         )}
 
         {/* Security pledge */}
-        <p className="text-[10px] text-text-muted text-center mt-8 leading-relaxed tracking-wide">
-          Your credentials are safe. We protect customer data using system authentication.
+        <p className="text-[10px] text-text-muted text-center mt-6 leading-relaxed">
+          Your credentials are protected with secure authentication.
         </p>
 
       </div>
