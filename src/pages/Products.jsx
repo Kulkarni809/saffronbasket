@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { DirectusService } from '../services/DirectusService';
-import { Search, Star, ShoppingCart, Loader2, ArrowUpDown, SlidersHorizontal } from 'lucide-react';
+import { Search, Star, ShoppingCart, Loader as Loader2, ArrowUpDown, SlidersHorizontal } from 'lucide-react';
 
 export default function Products({ setSelectedProductSlug, setActivePage, addToCart, selectedCategory, setSelectedCategory }) {
   const [products, setProducts] = useState([]);
@@ -88,11 +88,11 @@ export default function Products({ setSelectedProductSlug, setActivePage, addToC
       </div>
 
       {/* Filters and Search Bar Container */}
-      <div className="flex flex-col lg:flex-row items-stretch gap-6 mb-10 pb-6 border-b border-white/5">
-        
+      <div className="flex flex-col lg:flex-row items-stretch lg:items-center gap-4 lg:gap-6 mb-10 pb-6 border-b border-white/5">
+
         {/* Search Input Form */}
         <form onSubmit={handleSearchSubmit} className="relative flex-grow flex items-center">
-          <input 
+          <input
             type="text"
             placeholder="Search saffron, shilajit, dry fruits..."
             value={searchTerm}
@@ -100,7 +100,7 @@ export default function Products({ setSelectedProductSlug, setActivePage, addToC
             className="w-full bg-transparent border-b border-white/15 pl-10 pr-12 py-3 text-sm text-text-primary focus:outline-none focus:border-gold transition-all"
           />
           <Search className="w-4 h-4 text-text-muted absolute left-2 top-1/2 -translate-y-1/2" />
-          <button 
+          <button
             type="submit"
             className="absolute right-2 top-1/2 -translate-y-1/2 text-gold hover:text-white text-xs font-semibold uppercase tracking-wider transition-colors cursor-pointer"
             style={{ color: 'hsl(var(--color-primary-gold))' }}
@@ -110,17 +110,13 @@ export default function Products({ setSelectedProductSlug, setActivePage, addToC
         </form>
 
         {/* Sorters and Selectors Grid */}
-        <div className="flex flex-wrap items-center gap-4">
-          
-          <div className="flex items-center gap-2 py-2 px-4 rounded-md bg-white/5 border border-white/10 text-xs font-semibold text-text-secondary">
-            <SlidersHorizontal className="w-4 h-4" /> Filter & Sort
-          </div>
+        <div className="flex flex-wrap items-center gap-3">
 
           {/* Sort Dropdown */}
           <select
             value={sortOption}
             onChange={(e) => setSortOption(e.target.value)}
-            className="bg-bg-panel border border-white/10 rounded-md px-4 py-2.5 text-sm text-text-secondary focus:outline-none focus:border-gold cursor-pointer"
+            className="bg-bg-panel border border-white/10 rounded-md px-3 py-2.5 text-sm text-text-secondary focus:outline-none focus:border-gold cursor-pointer flex-shrink-0"
             style={{ backgroundColor: 'hsl(var(--color-bg-panel))' }}
           >
             <option value="">Default Sorting</option>
@@ -128,7 +124,7 @@ export default function Products({ setSelectedProductSlug, setActivePage, addToC
             <option value="price-desc">Price: High to Low</option>
             <option value="rating-desc">Customer Rating</option>
           </select>
-          
+
           {/* Reset Filters button */}
           {(selectedCategory || activeSearch || sortOption) && (
             <button
@@ -138,7 +134,7 @@ export default function Products({ setSelectedProductSlug, setActivePage, addToC
                 setActiveSearch('');
                 setSortOption('');
               }}
-              className="text-xs font-semibold text-primary-crimson hover:underline"
+              className="text-xs font-semibold text-primary-crimson hover:underline whitespace-nowrap flex-shrink-0"
               style={{ color: 'hsl(var(--color-primary-crimson))' }}
             >
               Clear All Filters

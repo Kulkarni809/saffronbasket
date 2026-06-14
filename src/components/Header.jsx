@@ -41,36 +41,36 @@ export default function Header({ activePage, setActivePage, cart, user, onLogout
         </div>
 
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center gap-8 font-sans text-sm font-medium tracking-wide">
-          <button 
+        <nav className="hidden md:flex items-center gap-4 lg:gap-6 font-sans text-xs lg:text-sm font-medium tracking-wide">
+          <button
             onClick={handleHomeClick}
-            className={`transition-all duration-300 hover:text-gold hover:translate-y-[-1px] ${activePage === 'home' ? 'text-gold font-bold' : 'text-text-secondary'}`}
+            className={`whitespace-nowrap px-2 py-1.5 transition-all duration-300 hover:text-gold ${activePage === 'home' ? 'text-gold font-semibold' : 'text-text-secondary'}`}
             style={{ color: activePage === 'home' ? 'hsl(var(--color-primary-gold))' : '' }}
           >
             Home
           </button>
-          <button 
+          <button
             onClick={() => handleCategoryNavClick('saffron')}
-            className={`transition-all duration-300 hover:text-gold hover:translate-y-[-1px] ${activePage === 'products' && selectedCategory === 'saffron' ? 'text-gold font-bold' : 'text-text-secondary'}`}
+            className={`whitespace-nowrap px-2 py-1.5 transition-all duration-300 hover:text-gold ${activePage === 'products' && selectedCategory === 'saffron' ? 'text-gold font-semibold' : 'text-text-secondary'}`}
             style={{ color: activePage === 'products' && selectedCategory === 'saffron' ? 'hsl(var(--color-primary-gold))' : '' }}
           >
-            Afghan Saffron
+            Saffron
           </button>
-          <button 
+          <button
             onClick={() => handleCategoryNavClick('shilajit')}
-            className={`transition-all duration-300 hover:text-gold hover:translate-y-[-1px] ${activePage === 'products' && selectedCategory === 'shilajit' ? 'text-gold font-bold' : 'text-text-secondary'}`}
+            className={`whitespace-nowrap px-2 py-1.5 transition-all duration-300 hover:text-gold ${activePage === 'products' && selectedCategory === 'shilajit' ? 'text-gold font-semibold' : 'text-text-secondary'}`}
             style={{ color: activePage === 'products' && selectedCategory === 'shilajit' ? 'hsl(var(--color-primary-gold))' : '' }}
           >
-            Mountain Shilajit
+            Shilajit
           </button>
-          <button 
+          <button
             onClick={() => handleCategoryNavClick('dry-fruits')}
-            className={`transition-all duration-300 hover:text-gold hover:translate-y-[-1px] ${activePage === 'products' && selectedCategory === 'dry-fruits' ? 'text-gold font-bold' : 'text-text-secondary'}`}
+            className={`whitespace-nowrap px-2 py-1.5 transition-all duration-300 hover:text-gold ${activePage === 'products' && selectedCategory === 'dry-fruits' ? 'text-gold font-semibold' : 'text-text-secondary'}`}
             style={{ color: activePage === 'products' && selectedCategory === 'dry-fruits' ? 'hsl(var(--color-primary-gold))' : '' }}
           >
-            Organic Dry Fruits
+            Dry Fruits
           </button>
-          <button 
+          <button
             onClick={() => {
               handleHomeClick();
               setTimeout(() => {
@@ -78,9 +78,9 @@ export default function Header({ activePage, setActivePage, cart, user, onLogout
                 if (element) element.scrollIntoView({ behavior: 'smooth' });
               }, 100);
             }}
-            className="transition-all duration-300 text-text-secondary hover:text-gold hover:translate-y-[-1px] cursor-pointer"
+            className="whitespace-nowrap px-2 py-1.5 transition-all duration-300 text-text-secondary hover:text-gold cursor-pointer"
           >
-            Sourcing Story
+            Story
           </button>
         </nav>
 

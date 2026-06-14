@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { DirectusService } from '../services/DirectusService';
-import { CreditCard, ShieldCheck, ArrowRight, Loader2, CheckCircle2, ShoppingBag, Truck, Check } from 'lucide-react';
+import { CreditCard, ShieldCheck, ArrowRight, Loader as Loader2, CircleCheck as CheckCircle2, ShoppingBag, Truck, Check } from 'lucide-react';
 
 export default function Checkout({ cart, clearCart, setActivePage, user }) {
   // Form input states
@@ -215,28 +215,28 @@ export default function Checkout({ cart, clearCart, setActivePage, user }) {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div className="input-group">
                 <label className="input-label">Phone Number</label>
-                <input 
-                  type="tel" 
+                <input
+                  type="tel"
                   required
                   placeholder="e.g. +91 98765 43210"
                   value={phone}
                   onChange={(e) => setPhone(e.target.value)}
-                  className="input-field" 
+                  className="input-field"
                   pattern="^\+?[0-9\s\-]{10,15}$"
                 />
               </div>
+            </div>
 
-              <div className="input-group">
-                <label className="input-label">Sourcing Destination Address</label>
-                <input 
-                  type="text" 
-                  required
-                  placeholder="Flat/House No., Area, City, State, Pincode"
-                  value={address}
-                  onChange={(e) => setAddress(e.target.value)}
-                  className="input-field" 
-                />
-              </div>
+            <div className="input-group">
+              <label className="input-label">Shipping Address</label>
+              <textarea
+                required
+                placeholder="Flat/House No., Area, City, State, Pincode"
+                value={address}
+                onChange={(e) => setAddress(e.target.value)}
+                className="input-field min-h-[80px] resize-none"
+                rows="3"
+              />
             </div>
 
           </div>

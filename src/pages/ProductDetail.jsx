@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { DirectusService } from '../services/DirectusService';
-import { Star, ShieldCheck, MapPin, Sparkles, ShoppingCart, ArrowLeft, Plus, Minus, Info, ClipboardList, Loader2 } from 'lucide-react';
+import { Star, ShieldCheck, MapPin, Sparkles, ShoppingCart, ArrowLeft, Plus, Minus, Info, ClipboardList, Loader as Loader2 } from 'lucide-react';
 
 export default function ProductDetail({ slug, setActivePage, addToCart }) {
   const [product, setProduct] = useState(null);
@@ -166,20 +166,20 @@ export default function ProductDetail({ slug, setActivePage, addToCart }) {
 
           {/* Gallery Selector Indicators */}
           {product.gallery && product.gallery.length > 1 && (
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-2 sm:gap-3 overflow-x-auto pb-2">
               {product.gallery.map((imgId, idx) => (
                 <button
                   key={imgId || idx}
                   onClick={() => setActiveImageIdx(idx)}
-                  className={`w-16 h-16 rounded-xl overflow-hidden border transition-all relative ${
-                    activeImageIdx === idx 
-                      ? 'border-gold scale-105' 
+                  className={`w-14 h-14 sm:w-16 sm:h-16 rounded-lg sm:rounded-xl overflow-hidden border transition-all relative flex-shrink-0 ${
+                    activeImageIdx === idx
+                      ? 'border-gold scale-105'
                       : 'border-white/10 opacity-70 hover:opacity-100'
                   }`}
                   style={{ borderColor: activeImageIdx === idx ? 'hsl(var(--color-primary-gold))' : '' }}
                 >
-                  <img 
-                    src={DirectusService.getImageUrl(imgId)} 
+                  <img
+                    src={DirectusService.getImageUrl(imgId)}
                     alt={`Thumbnail ${idx + 1}`}
                     className="w-full h-full object-cover"
                   />
@@ -233,19 +233,20 @@ export default function ProductDetail({ slug, setActivePage, addToCart }) {
           {/* 1. Interactive Size/Weight Selector */}
           <div>
             <h4 className="text-[10px] font-semibold text-text-secondary uppercase tracking-[0.15em] mb-2.5">Select Sizing</h4>
-            <div className="flex flex-wrap gap-2">
+            <div className="flex flex-wrap gap-2 sm:gap-3">
               {weightOptions.map((opt) => (
                 <button
                   key={opt.value}
                   onClick={() => handleWeightChange(opt.value)}
-                  className={`py-2 px-4 rounded border text-xs font-medium transition-all cursor-pointer ${
+                  className={`py-2 sm:py-2.5 px-3 sm:px-4 rounded border text-xs font-medium transition-all cursor-pointer whitespace-nowrap ${
                     selectedWeight === opt.value
-                      ? 'border-gold bg-gold/5 text-gold font-medium'
-                      : 'border-white/10 text-text-secondary hover:border-white/20'
+                      ? 'border-gold bg-gold/10 text-gold font-semibold'
+                      : 'border-white/10 text-text-secondary hover:border-white/20 hover:bg-white/5'
                   }`}
                   style={selectedWeight === opt.value ? { borderColor: 'hsl(var(--color-primary-gold))', color: 'hsl(var(--color-primary-gold))' } : {}}
                 >
-                  {opt.label} (₹{(product.price * opt.multiplier).toFixed(0)})
+                  {opt.label}
+                  <span className="block text-[10px] opacity-70 mt-0.5">₹{(product.price * opt.multiplier).toFixed(0)}</span>
                 </button>
               ))}
             </div>

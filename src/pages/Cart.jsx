@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ShoppingBag, Trash2, ArrowLeft, ArrowRight, Tag, Percent, Sparkles, AlertCircle } from 'lucide-react';
+import { ShoppingBag, Trash2, ArrowLeft, ArrowRight, Tag, Percent, Sparkles, CircleAlert as AlertCircle } from 'lucide-react';
 import { DirectusService } from '../services/DirectusService';
 
 export default function Cart({ cart, updateCartQuantity, removeFromCart, setActivePage }) {
@@ -99,77 +99,77 @@ export default function Cart({ cart, updateCartQuantity, removeFromCart, setActi
           {cart.map((item, idx) => {
             const itemCategory = item.categories?.[0]?.categories_id?.slug || 'saffron';
             const itemTotal = (item.price * item.quantity).toFixed(2);
-            
+
             return (
-              <div 
+              <div
                 key={`${item.id}-${item.weight}`}
-                className="glass-card p-6 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-6 border-white/5 hover:transform-none"
+                className="glass-card p-4 sm:p-6 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4 sm:gap-6 border-white/5 hover:transform-none"
               >
-                
+
                 {/* Product details block */}
-                <div className="flex items-center gap-4 flex-grow">
-                  <div 
-                    className="w-20 h-20 rounded-2xl flex-shrink-0 flex items-center justify-center overflow-hidden border border-white/5 relative bg-bg-dark"
+                <div className="flex items-center gap-3 sm:gap-4 flex-grow min-w-0">
+                  <div
+                    className="w-16 h-16 sm:w-20 sm:h-20 rounded-xl sm:rounded-2xl flex-shrink-0 flex items-center justify-center overflow-hidden border border-white/5 relative bg-bg-dark"
                   >
                     {item.image ? (
-                      <img 
-                        src={DirectusService.getImageUrl(item.image)} 
+                      <img
+                        src={DirectusService.getImageUrl(item.image)}
                         alt={item.name}
                         className="w-full h-full object-cover"
                       />
                     ) : (
-                      <div 
+                      <div
                         className="absolute inset-0 w-full h-full"
                         style={{ background: getFallbackGradient(itemCategory) }}
                       ></div>
                     )}
-                    <span className="absolute bottom-1 right-1 bg-black/75 px-1.5 py-0.5 rounded text-[8px] font-bold uppercase tracking-widest text-gold border border-white/10" style={{ color: 'hsl(var(--color-primary-gold))' }}>{item.weight}</span>
+                    <span className="absolute bottom-1 right-1 bg-black/80 px-1.5 py-0.5 rounded text-[8px] font-bold uppercase tracking-widest text-gold border border-white/10" style={{ color: 'hsl(var(--color-primary-gold))' }}>{item.weight}</span>
                   </div>
-                  
-                  <div className="text-left">
-                    <span className="text-xs text-gold font-semibold uppercase tracking-wider" style={{ color: 'hsl(var(--color-primary-gold))' }}>
+
+                  <div className="text-left min-w-0 flex-grow">
+                    <span className="text-[10px] sm:text-xs text-gold font-semibold uppercase tracking-wider" style={{ color: 'hsl(var(--color-primary-gold))' }}>
                       {item.origin}
                     </span>
-                    <h3 className="font-serif font-bold text-text-primary text-base md:text-lg mb-1 leading-snug">
+                    <h3 className="font-serif font-bold text-text-primary text-sm sm:text-base md:text-lg mb-0.5 sm:mb-1 leading-snug truncate">
                       {item.name}
                     </h3>
-                    <p className="text-xs text-text-muted">
-                      Weight option: <span className="font-semibold text-text-secondary">{item.weight}</span>
+                    <p className="text-[10px] sm:text-xs text-text-muted">
+                      Weight: <span className="font-semibold text-text-secondary">{item.weight}</span>
                     </p>
                   </div>
                 </div>
 
                 {/* Quantity adjuster and price blocks */}
-                <div className="flex items-center justify-between sm:justify-end gap-8 border-t sm:border-t-0 pt-4 sm:pt-0 border-white/5">
-                  
+                <div className="flex items-center justify-end gap-4 sm:gap-6 border-t sm:border-t-0 pt-4 sm:pt-0 border-white/5">
+
                   {/* Quantity selector */}
-                  <div className="flex items-center rounded-lg bg-white/5 border border-white/10 p-1">
-                    <button 
+                  <div className="flex items-center rounded-lg bg-white/5 border border-white/10 p-0.5 sm:p-1">
+                    <button
                       onClick={() => updateCartQuantity(item.id, item.weight, item.quantity - 1)}
-                      className="p-1.5 text-text-secondary hover:text-text-primary transition-colors"
+                      className="p-1.5 sm:p-2 text-text-secondary hover:text-text-primary transition-colors"
                       disabled={item.quantity <= 1}
                     >
-                      <Trash2 className="w-3.5 h-3.5" />
+                      <span className="text-sm font-bold">-</span>
                     </button>
                     <span className="w-8 text-center text-sm font-semibold">{item.quantity}</span>
-                    <button 
+                    <button
                       onClick={() => updateCartQuantity(item.id, item.weight, item.quantity + 1)}
-                      className="p-1.5 text-text-secondary hover:text-text-primary transition-colors"
+                      className="p-1.5 sm:p-2 text-text-secondary hover:text-text-primary transition-colors"
                     >
-                      +
+                      <span className="text-sm font-bold">+</span>
                     </button>
                   </div>
 
                   {/* Pricing Display */}
-                  <div className="text-right min-w-[80px]">
+                  <div className="text-right min-w-[70px] sm:min-w-[80px] flex-shrink-0">
                     <span className="block text-sm font-bold text-text-primary">₹{itemTotal}</span>
-                    <span className="block text-3xs text-text-muted mt-0.5">₹{item.price} each</span>
+                    <span className="block text-[10px] sm:text-3xs text-text-muted mt-0.5">₹{item.price} each</span>
                   </div>
 
                   {/* Delete button */}
-                  <button 
+                  <button
                     onClick={() => removeFromCart(item.id, item.weight)}
-                    className="p-2 text-text-muted hover:text-primary-crimson transition-colors"
+                    className="p-2 text-text-muted hover:text-primary-crimson transition-colors flex-shrink-0"
                     aria-label="Remove Item"
                   >
                     <Trash2 className="w-4 h-4" />
@@ -260,9 +260,9 @@ export default function Cart({ cart, updateCartQuantity, removeFromCart, setActi
                 onChange={(e) => setCoupon(e.target.value)}
                 className="w-full bg-white/5 border border-white/10 rounded-md px-3 py-2 text-xs text-text-primary focus:outline-none focus:border-gold"
               />
-              <button 
-                type="submit" 
-                className="btn btn-secondary px-4 py-2 text-xs"
+              <button
+                type="submit"
+                className="btn btn-secondary px-4 py-2 text-xs whitespace-nowrap flex-shrink-0"
               >
                 Apply
               </button>
