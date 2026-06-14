@@ -68,8 +68,8 @@ export default function Auth({ onLoginSuccess, setActivePage }) {
   return (
     <div className="min-h-screen flex items-center justify-center pt-20 pb-20 animate-fade-in-up font-sans">
       <div
-        className="w-full max-w-md mx-4 sm:mx-auto glass-card p-6 sm:p-10 border border-white/5 shadow-lg relative rounded-lg"
-        style={{ background: 'hsla(var(--color-bg-panel) / 0.85)', backdropFilter: 'blur(20px)', WebkitBackdropFilter: 'blur(20px)' }}
+        className="w-full max-w-md mx-4 sm:mx-auto glass-card border border-white/5 shadow-lg relative rounded-lg"
+        style={{ padding: '32px', background: 'hsla(var(--color-bg-panel) / 0.85)', backdropFilter: 'blur(20px)', WebkitBackdropFilter: 'blur(20px)' }}
       >
 
         {/* Premium Brand Header */}
@@ -150,8 +150,8 @@ export default function Auth({ onLoginSuccess, setActivePage }) {
                   placeholder="john@example.com"
                   value={loginEmail}
                   onChange={(e) => setLoginEmail(e.target.value)}
-                  className="w-full pl-11 pr-4 py-3 rounded-lg bg-white/5 border border-white/10 focus:border-gold focus:outline-none transition-all text-sm text-text-primary placeholder-text-muted"
-                  style={{ borderColor: 'var(var(--color-primary-gold), transparent)' }}
+                  className="w-full pl-12 pr-4 py-3 rounded-lg bg-white/5 border border-white/10 focus:border-gold focus:outline-none transition-all text-sm text-text-primary placeholder-text-muted"
+                  style={{ paddingLeft: '48px', paddingRight: '16px', paddingTop: '12px', paddingBottom: '12px', borderColor: 'var(--color-primary-gold, transparent)' }}
                   disabled={loading}
                 />
                 <Mail className="w-4 h-4 text-text-muted absolute left-4 top-1/2 -translate-y-1/2" />
@@ -167,7 +167,8 @@ export default function Auth({ onLoginSuccess, setActivePage }) {
                   placeholder="Enter password"
                   value={loginPassword}
                   onChange={(e) => setLoginPassword(e.target.value)}
-                  className="w-full pl-11 pr-4 py-3 rounded-lg bg-white/5 border border-white/10 focus:border-gold focus:outline-none transition-all text-sm text-text-primary placeholder-text-muted"
+                  className="w-full pl-12 pr-4 py-3 rounded-lg bg-white/5 border border-white/10 focus:border-gold focus:outline-none transition-all text-sm text-text-primary placeholder-text-muted"
+                  style={{ paddingLeft: '48px', paddingRight: '16px', paddingTop: '12px', paddingBottom: '12px' }}
                   disabled={loading}
                 />
                 <Lock className="w-4 h-4 text-text-muted absolute left-4 top-1/2 -translate-y-1/2" />
@@ -204,7 +205,8 @@ export default function Auth({ onLoginSuccess, setActivePage }) {
                     placeholder="John"
                     value={firstName}
                     onChange={(e) => setFirstName(e.target.value)}
-                    className="w-full pl-11 pr-3 py-3 rounded-lg bg-white/5 border border-white/10 focus:border-gold focus:outline-none transition-all text-sm text-text-primary placeholder-text-muted"
+                    className="w-full pl-12 pr-3 py-3 rounded-lg bg-white/5 border border-white/10 focus:border-gold focus:outline-none transition-all text-sm text-text-primary placeholder-text-muted"
+                    style={{ paddingLeft: '48px', paddingRight: '12px', paddingTop: '12px', paddingBottom: '12px' }}
                     disabled={loading}
                   />
                   <User className="w-4 h-4 text-text-muted absolute left-4 top-1/2 -translate-y-1/2" />
@@ -219,7 +221,8 @@ export default function Auth({ onLoginSuccess, setActivePage }) {
                     placeholder="Doe"
                     value={lastName}
                     onChange={(e) => setLastName(e.target.value)}
-                    className="w-full pl-11 pr-3 py-3 rounded-lg bg-white/5 border border-white/10 focus:border-gold focus:outline-none transition-all text-sm text-text-primary placeholder-text-muted"
+                    className="w-full pl-12 pr-3 py-3 rounded-lg bg-white/5 border border-white/10 focus:border-gold focus:outline-none transition-all text-sm text-text-primary placeholder-text-muted"
+                    style={{ paddingLeft: '48px', paddingRight: '12px', paddingTop: '12px', paddingBottom: '12px' }}
                     disabled={loading}
                   />
                   <User className="w-4 h-4 text-text-muted absolute left-4 top-1/2 -translate-y-1/2" />
@@ -236,7 +239,8 @@ export default function Auth({ onLoginSuccess, setActivePage }) {
                   placeholder="john@example.com"
                   value={signupEmail}
                   onChange={(e) => setSignupEmail(e.target.value)}
-                  className="w-full pl-11 pr-4 py-3 rounded-lg bg-white/5 border border-white/10 focus:border-gold focus:outline-none transition-all text-sm text-text-primary placeholder-text-muted"
+                  className="w-full pl-12 pr-4 py-3 rounded-lg bg-white/5 border border-white/10 focus:border-gold focus:outline-none transition-all text-sm text-text-primary placeholder-text-muted"
+                  style={{ paddingLeft: '48px', paddingRight: '16px', paddingTop: '12px', paddingBottom: '12px' }}
                   disabled={loading}
                 />
                 <Mail className="w-4 h-4 text-text-muted absolute left-4 top-1/2 -translate-y-1/2" />
@@ -252,7 +256,8 @@ export default function Auth({ onLoginSuccess, setActivePage }) {
                   placeholder="+1 (555) 000-0000"
                   value={phone}
                   onChange={(e) => setPhone(e.target.value)}
-                  className="w-full pl-11 pr-4 py-3 rounded-lg bg-white/5 border border-white/10 focus:border-gold focus:outline-none transition-all text-sm text-text-primary placeholder-text-muted"
+                  className="w-full pl-12 pr-4 py-3 rounded-lg bg-white/5 border border-white/10 focus:border-gold focus:outline-none transition-all text-sm text-text-primary placeholder-text-muted"
+                  style={{ paddingLeft: '48px', paddingRight: '16px', paddingTop: '12px', paddingBottom: '12px' }}
                   disabled={loading}
                 />
                 <Phone className="w-4 h-4 text-text-muted absolute left-4 top-1/2 -translate-y-1/2" />
@@ -269,7 +274,8 @@ export default function Auth({ onLoginSuccess, setActivePage }) {
                   minLength="6"
                   value={signupPassword}
                   onChange={(e) => setSignupPassword(e.target.value)}
-                  className="w-full pl-11 pr-4 py-3 rounded-lg bg-white/5 border border-white/10 focus:border-gold focus:outline-none transition-all text-sm text-text-primary placeholder-text-muted"
+                  className="w-full pl-12 pr-4 py-3 rounded-lg bg-white/5 border border-white/10 focus:border-gold focus:outline-none transition-all text-sm text-text-primary placeholder-text-muted"
+                  style={{ paddingLeft: '48px', paddingRight: '16px', paddingTop: '12px', paddingBottom: '12px' }}
                   disabled={loading}
                 />
                 <Lock className="w-4 h-4 text-text-muted absolute left-4 top-1/2 -translate-y-1/2" />
