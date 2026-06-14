@@ -1,3 +1,7 @@
 {
-  "mcpServers": {}
+  "mcpServers": {
+    "directus_ip_server": {
+      "enabled": false
+    }
+  }
 }
