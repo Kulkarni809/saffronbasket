@@ -46,7 +46,7 @@ export default function ProductDetail({ slug, setActivePage, addToCart }) {
       <div className="container pt-20 md:pt-28 lg:pt-32 pb-20 md:pb-28 lg:pb-32 text-center animate-fade-in-up">
         <div className="p-8 glass-card max-w-md mx-auto border-white/5">
           <p className="text-primary-crimson text-lg mb-4">{error || 'Product not found.'}</p>
-          <button onClick={() => setActivePage('products')} className="btn btn-secondary flex items-center gap-1 mx-auto">
+          <button onClick={() => setActivePage('products')} className="btn btn-secondary h-12 flex items-center gap-1 mx-auto">
             <ArrowLeft className="w-4 h-4" /> Back to Catalog
           </button>
         </div>
@@ -289,12 +289,12 @@ export default function ProductDetail({ slug, setActivePage, addToCart }) {
             </div>
 
             {/* Add button */}
-            <button 
+            <button
               onClick={handleAddToCart}
-              className="btn btn-gold flex-grow py-4 px-8"
+              className="btn btn-gold h-12 flex-grow px-8"
               style={{ backgroundColor: 'hsl(var(--color-primary-gold))', color: 'hsl(var(--color-bg-dark))' }}
             >
-              <ShoppingCart className="w-4.5 h-4.5" />
+              <ShoppingCart className="w-4 h-4" />
               Add to Shopping Bag
             </button>
 

@@ -148,9 +148,9 @@ export default function Checkout({ cart, clearCart, setActivePage, user }) {
             </div>
           </div>
 
-          <button 
+          <button
             onClick={() => setActivePage('products')}
-            className="btn btn-gold px-8 py-3.5"
+            className="btn btn-gold h-12 px-8"
             style={{ backgroundColor: 'hsl(var(--color-primary-gold))', color: 'hsl(var(--color-bg-dark))' }}
           >
             Continue Sourcing Products
@@ -189,25 +189,25 @@ export default function Checkout({ cart, clearCart, setActivePage, user }) {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div className="input-group">
                 <label className="input-label">Full Name</label>
-                <input 
-                  type="text" 
+                <input
+                  type="text"
                   required
                   placeholder="e.g. John Doe"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
-                  className="input-field" 
+                  className="input-field w-full"
                 />
               </div>
 
               <div className="input-group">
                 <label className="input-label">Email Address</label>
-                <input 
-                  type="email" 
+                <input
+                  type="email"
                   required
                   placeholder="e.g. john@example.com"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="input-field" 
+                  className="input-field w-full"
                 />
               </div>
             </div>
@@ -221,7 +221,7 @@ export default function Checkout({ cart, clearCart, setActivePage, user }) {
                   placeholder="e.g. +91 98765 43210"
                   value={phone}
                   onChange={(e) => setPhone(e.target.value)}
-                  className="input-field"
+                  className="input-field w-full"
                   pattern="^\+?[0-9\s\-]{10,15}$"
                 />
               </div>
@@ -234,7 +234,7 @@ export default function Checkout({ cart, clearCart, setActivePage, user }) {
                 placeholder="Flat/House No., Area, City, State, Pincode"
                 value={address}
                 onChange={(e) => setAddress(e.target.value)}
-                className="input-field min-h-[80px] resize-none"
+                className="textarea-field w-full"
                 rows="3"
               />
             </div>
@@ -251,26 +251,26 @@ export default function Checkout({ cart, clearCart, setActivePage, user }) {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div className="input-group">
                 <label className="input-label">Card Number</label>
-                <input 
-                  type="text" 
+                <input
+                  type="text"
                   required
                   placeholder="4111 2222 3333 4444"
                   maxLength="19"
                   value={cardNumber}
                   onChange={(e) => setCardNumber(e.target.value)}
-                  className="input-field" 
+                  className="input-field w-full"
                 />
               </div>
 
               <div className="input-group">
                 <label className="input-label">Name on Card</label>
-                <input 
-                  type="text" 
+                <input
+                  type="text"
                   required
                   placeholder="Cardholder name"
                   value={cardName}
                   onChange={(e) => setCardName(e.target.value)}
-                  className="input-field" 
+                  className="input-field w-full"
                 />
               </div>
             </div>
@@ -278,27 +278,27 @@ export default function Checkout({ cart, clearCart, setActivePage, user }) {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div className="input-group">
                 <label className="input-label">Expiration Date</label>
-                <input 
-                  type="text" 
+                <input
+                  type="text"
                   required
                   placeholder="MM / YY"
                   maxLength="7"
                   value={cardExpiry}
                   onChange={(e) => setCardExpiry(e.target.value)}
-                  className="input-field" 
+                  className="input-field w-full"
                 />
               </div>
 
               <div className="input-group">
                 <label className="input-label">CVV / Security Code</label>
-                <input 
-                  type="password" 
+                <input
+                  type="password"
                   required
                   placeholder="***"
                   maxLength="4"
                   value={cardCvv}
                   onChange={(e) => setCardCvv(e.target.value)}
-                  className="input-field" 
+                  className="input-field w-full"
                 />
               </div>
             </div>
@@ -308,9 +308,9 @@ export default function Checkout({ cart, clearCart, setActivePage, user }) {
             </p>
           </div>
 
-          <button 
+          <button
             type="submit"
-            className="btn btn-gold py-4 px-8 text-base w-full shadow-lg"
+            className="btn btn-gold h-12 w-full text-base shadow-lg"
             style={{ backgroundColor: 'hsl(var(--color-primary-gold))', color: 'hsl(var(--color-bg-dark))' }}
           >
             Authorize Payment & Place Order (₹{total.toFixed(2)})

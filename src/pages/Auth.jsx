@@ -150,8 +150,7 @@ export default function Auth({ onLoginSuccess, setActivePage }) {
                   placeholder="john@example.com"
                   value={loginEmail}
                   onChange={(e) => setLoginEmail(e.target.value)}
-                  className="w-full pl-12 pr-4 py-3 rounded-lg bg-white/5 border border-white/10 focus:border-gold focus:outline-none transition-all text-sm text-text-primary placeholder-text-muted"
-                  style={{ paddingLeft: '48px', paddingRight: '16px', paddingTop: '12px', paddingBottom: '12px', borderColor: 'var(--color-primary-gold, transparent)' }}
+                  className="input-field w-full pl-12"
                   disabled={loading}
                 />
                 <Mail className="w-4 h-4 text-text-muted absolute left-4 top-1/2 -translate-y-1/2" />
@@ -167,8 +166,7 @@ export default function Auth({ onLoginSuccess, setActivePage }) {
                   placeholder="Enter password"
                   value={loginPassword}
                   onChange={(e) => setLoginPassword(e.target.value)}
-                  className="w-full pl-12 pr-4 py-3 rounded-lg bg-white/5 border border-white/10 focus:border-gold focus:outline-none transition-all text-sm text-text-primary placeholder-text-muted"
-                  style={{ paddingLeft: '48px', paddingRight: '16px', paddingTop: '12px', paddingBottom: '12px' }}
+                  className="input-field w-full pl-12"
                   disabled={loading}
                 />
                 <Lock className="w-4 h-4 text-text-muted absolute left-4 top-1/2 -translate-y-1/2" />
@@ -177,7 +175,7 @@ export default function Auth({ onLoginSuccess, setActivePage }) {
 
             <button
               type="submit"
-              className="mt-2 py-3 px-6 rounded-lg font-semibold text-sm uppercase tracking-wider transition-all flex items-center justify-center gap-2 w-full"
+              className="btn btn-gold w-full h-12"
               style={{ backgroundColor: 'hsl(var(--color-primary-gold))', color: 'hsl(var(--color-bg-dark))' }}
               disabled={loading}
             >
@@ -205,8 +203,7 @@ export default function Auth({ onLoginSuccess, setActivePage }) {
                     placeholder="John"
                     value={firstName}
                     onChange={(e) => setFirstName(e.target.value)}
-                    className="w-full pl-12 pr-3 py-3 rounded-lg bg-white/5 border border-white/10 focus:border-gold focus:outline-none transition-all text-sm text-text-primary placeholder-text-muted"
-                    style={{ paddingLeft: '48px', paddingRight: '12px', paddingTop: '12px', paddingBottom: '12px' }}
+                    className="input-field w-full pl-12"
                     disabled={loading}
                   />
                   <User className="w-4 h-4 text-text-muted absolute left-4 top-1/2 -translate-y-1/2" />
@@ -221,8 +218,7 @@ export default function Auth({ onLoginSuccess, setActivePage }) {
                     placeholder="Doe"
                     value={lastName}
                     onChange={(e) => setLastName(e.target.value)}
-                    className="w-full pl-12 pr-3 py-3 rounded-lg bg-white/5 border border-white/10 focus:border-gold focus:outline-none transition-all text-sm text-text-primary placeholder-text-muted"
-                    style={{ paddingLeft: '48px', paddingRight: '12px', paddingTop: '12px', paddingBottom: '12px' }}
+                    className="input-field w-full pl-12"
                     disabled={loading}
                   />
                   <User className="w-4 h-4 text-text-muted absolute left-4 top-1/2 -translate-y-1/2" />
@@ -239,8 +235,7 @@ export default function Auth({ onLoginSuccess, setActivePage }) {
                   placeholder="john@example.com"
                   value={signupEmail}
                   onChange={(e) => setSignupEmail(e.target.value)}
-                  className="w-full pl-12 pr-4 py-3 rounded-lg bg-white/5 border border-white/10 focus:border-gold focus:outline-none transition-all text-sm text-text-primary placeholder-text-muted"
-                  style={{ paddingLeft: '48px', paddingRight: '16px', paddingTop: '12px', paddingBottom: '12px' }}
+                  className="input-field w-full pl-12"
                   disabled={loading}
                 />
                 <Mail className="w-4 h-4 text-text-muted absolute left-4 top-1/2 -translate-y-1/2" />
@@ -256,8 +251,7 @@ export default function Auth({ onLoginSuccess, setActivePage }) {
                   placeholder="+1 (555) 000-0000"
                   value={phone}
                   onChange={(e) => setPhone(e.target.value)}
-                  className="w-full pl-12 pr-4 py-3 rounded-lg bg-white/5 border border-white/10 focus:border-gold focus:outline-none transition-all text-sm text-text-primary placeholder-text-muted"
-                  style={{ paddingLeft: '48px', paddingRight: '16px', paddingTop: '12px', paddingBottom: '12px' }}
+                  className="input-field w-full pl-12"
                   disabled={loading}
                 />
                 <Phone className="w-4 h-4 text-text-muted absolute left-4 top-1/2 -translate-y-1/2" />
@@ -274,8 +268,7 @@ export default function Auth({ onLoginSuccess, setActivePage }) {
                   minLength="6"
                   value={signupPassword}
                   onChange={(e) => setSignupPassword(e.target.value)}
-                  className="w-full pl-12 pr-4 py-3 rounded-lg bg-white/5 border border-white/10 focus:border-gold focus:outline-none transition-all text-sm text-text-primary placeholder-text-muted"
-                  style={{ paddingLeft: '48px', paddingRight: '16px', paddingTop: '12px', paddingBottom: '12px' }}
+                  className="input-field w-full pl-12"
                   disabled={loading}
                 />
                 <Lock className="w-4 h-4 text-text-muted absolute left-4 top-1/2 -translate-y-1/2" />
@@ -284,7 +277,7 @@ export default function Auth({ onLoginSuccess, setActivePage }) {
 
             <button
               type="submit"
-              className="mt-2 py-3 px-6 rounded-lg font-semibold text-sm uppercase tracking-wider transition-all flex items-center justify-center gap-2 w-full"
+              className="btn btn-gold w-full h-12 mt-2"
               style={{ backgroundColor: 'hsl(var(--color-primary-gold))', color: 'hsl(var(--color-bg-dark))' }}
               disabled={loading}
             >

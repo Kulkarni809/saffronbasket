@@ -27,45 +27,45 @@ export default function Header({ activePage, setActivePage, cart, user, onLogout
 
   return (
     <header className="glass-nav sticky top-0 left-0 w-full z-50 transition-all duration-300">
-      <div className="container py-4 flex items-center justify-between">
-        
+      <div className="container h-16 flex items-center justify-between">
+
         {/* Brand Logo */}
-        <div 
+        <div
           className="flex items-center gap-2 cursor-pointer group"
           onClick={() => handleNavClick('home')}
         >
-          <Leaf className="w-6 h-6 text-gold group-hover:rotate-12 transition-transform duration-300" style={{ color: 'hsl(var(--color-primary-gold))' }} />
-          <span className="font-serif text-xl md:text-2xl font-bold tracking-tight">
+          <Leaf className="w-5 h-5 text-gold group-hover:rotate-12 transition-transform duration-300" style={{ color: 'hsl(var(--color-primary-gold))' }} />
+          <span className="font-serif text-lg md:text-xl font-bold tracking-tight">
             saffron<span className="text-gold" style={{ color: 'hsl(var(--color-primary-gold))' }}>basket</span>
           </span>
         </div>
 
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center gap-4 lg:gap-6 font-sans text-xs lg:text-sm font-medium tracking-wide">
+        <nav className="hidden md:flex items-center gap-6 font-sans text-sm font-medium">
           <button
             onClick={handleHomeClick}
-            className={`whitespace-nowrap px-2 py-1.5 transition-all duration-300 hover:text-gold ${activePage === 'home' ? 'text-gold font-semibold' : 'text-text-secondary'}`}
+            className={`h-10 px-3 transition-all duration-300 hover:text-gold ${activePage === 'home' ? 'text-gold font-semibold' : 'text-text-secondary'}`}
             style={{ color: activePage === 'home' ? 'hsl(var(--color-primary-gold))' : '' }}
           >
             Home
           </button>
           <button
             onClick={() => handleCategoryNavClick('saffron')}
-            className={`whitespace-nowrap px-2 py-1.5 transition-all duration-300 hover:text-gold ${activePage === 'products' && selectedCategory === 'saffron' ? 'text-gold font-semibold' : 'text-text-secondary'}`}
+            className={`h-10 px-3 transition-all duration-300 hover:text-gold ${activePage === 'products' && selectedCategory === 'saffron' ? 'text-gold font-semibold' : 'text-text-secondary'}`}
             style={{ color: activePage === 'products' && selectedCategory === 'saffron' ? 'hsl(var(--color-primary-gold))' : '' }}
           >
             Saffron
           </button>
           <button
             onClick={() => handleCategoryNavClick('shilajit')}
-            className={`whitespace-nowrap px-2 py-1.5 transition-all duration-300 hover:text-gold ${activePage === 'products' && selectedCategory === 'shilajit' ? 'text-gold font-semibold' : 'text-text-secondary'}`}
+            className={`h-10 px-3 transition-all duration-300 hover:text-gold ${activePage === 'products' && selectedCategory === 'shilajit' ? 'text-gold font-semibold' : 'text-text-secondary'}`}
             style={{ color: activePage === 'products' && selectedCategory === 'shilajit' ? 'hsl(var(--color-primary-gold))' : '' }}
           >
             Shilajit
           </button>
           <button
             onClick={() => handleCategoryNavClick('dry-fruits')}
-            className={`whitespace-nowrap px-2 py-1.5 transition-all duration-300 hover:text-gold ${activePage === 'products' && selectedCategory === 'dry-fruits' ? 'text-gold font-semibold' : 'text-text-secondary'}`}
+            className={`h-10 px-3 transition-all duration-300 hover:text-gold ${activePage === 'products' && selectedCategory === 'dry-fruits' ? 'text-gold font-semibold' : 'text-text-secondary'}`}
             style={{ color: activePage === 'products' && selectedCategory === 'dry-fruits' ? 'hsl(var(--color-primary-gold))' : '' }}
           >
             Dry Fruits
@@ -78,19 +78,19 @@ export default function Header({ activePage, setActivePage, cart, user, onLogout
                 if (element) element.scrollIntoView({ behavior: 'smooth' });
               }, 100);
             }}
-            className="whitespace-nowrap px-2 py-1.5 transition-all duration-300 text-text-secondary hover:text-gold cursor-pointer"
+            className="h-10 px-3 transition-all duration-300 text-text-secondary hover:text-gold cursor-pointer"
           >
             Story
           </button>
         </nav>
 
         {/* Action Icons */}
-        <div className="flex items-center gap-4 md:gap-6">
-          
+        <div className="flex items-center gap-3">
+
           {/* Cart Icon */}
-          <button 
+          <button
             onClick={() => handleNavClick('cart')}
-            className="relative p-2.5 rounded-full border border-white/10 hover:border-gold/30 hover:bg-white/5 text-text-primary hover:text-gold transition-all duration-300 cursor-pointer"
+            className="relative w-10 h-10 rounded-full border border-white/10 hover:border-gold/30 hover:bg-white/5 text-text-primary hover:text-gold transition-all duration-300 cursor-pointer flex items-center justify-center"
             aria-label="Shopping Cart"
           >
             <ShoppingBag className="w-5 h-5" />
@@ -105,9 +105,9 @@ export default function Header({ activePage, setActivePage, cart, user, onLogout
           <div className="relative">
             {user ? (
               <div>
-                <button 
+                <button
                   onClick={() => setUserDropdownOpen(!userDropdownOpen)}
-                  className="flex items-center gap-2 py-2 px-4 rounded-full bg-white/5 border border-white/10 hover:border-gold/30 hover:bg-white/10 transition-all text-sm font-medium cursor-pointer"
+                  className="h-10 flex items-center gap-2 px-4 rounded-full bg-white/5 border border-white/10 hover:border-gold/30 hover:bg-white/10 transition-all text-sm font-medium cursor-pointer"
                 >
                   <User className="w-4 h-4 text-gold" style={{ color: 'hsl(var(--color-primary-gold))' }} />
                   <span className="hidden sm:inline">Salam, {user.first_name || 'Guest'}</span>
@@ -138,9 +138,9 @@ export default function Header({ activePage, setActivePage, cart, user, onLogout
                 )}
               </div>
             ) : (
-              <button 
+              <button
                 onClick={() => handleNavClick('auth')}
-                className="flex items-center gap-2 py-2 px-5 rounded-full border border-primary-gold/40 hover:bg-gold hover:text-bg-dark hover:border-gold hover:shadow-[0_0_15px_hsl(var(--color-primary-gold)/0.3)] text-gold text-sm font-semibold transition-all duration-300 cursor-pointer"
+                className="h-10 flex items-center gap-2 px-5 rounded-full border border-primary-gold/40 hover:bg-gold hover:text-bg-dark hover:border-gold hover:shadow-[0_0_15px_hsl(var(--color-primary-gold)/0.3)] text-gold text-sm font-semibold transition-all duration-300 cursor-pointer"
                 style={{ color: 'hsl(var(--color-primary-gold))', borderColor: 'hsl(var(--color-primary-gold) / 0.4)' }}
               >
                 <User className="w-4 h-4" />

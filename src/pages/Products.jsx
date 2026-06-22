@@ -97,12 +97,12 @@ export default function Products({ setSelectedProductSlug, setActivePage, addToC
             placeholder="Search saffron, shilajit, dry fruits..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="w-full bg-transparent border-b border-white/15 pl-10 pr-12 py-3 text-sm text-text-primary focus:outline-none focus:border-gold transition-all"
+            className="input-field w-full pl-10 pr-20"
           />
-          <Search className="w-4 h-4 text-text-muted absolute left-2 top-1/2 -translate-y-1/2" />
+          <Search className="w-4 h-4 text-text-muted absolute left-4 top-1/2 -translate-y-1/2" />
           <button
             type="submit"
-            className="absolute right-2 top-1/2 -translate-y-1/2 text-gold hover:text-white text-xs font-semibold uppercase tracking-wider transition-colors cursor-pointer"
+            className="absolute right-3 top-1/2 -translate-y-1/2 text-gold hover:text-white text-xs font-semibold uppercase tracking-wider transition-colors cursor-pointer"
             style={{ color: 'hsl(var(--color-primary-gold))' }}
           >
             Search
@@ -116,7 +116,7 @@ export default function Products({ setSelectedProductSlug, setActivePage, addToC
           <select
             value={sortOption}
             onChange={(e) => setSortOption(e.target.value)}
-            className="bg-bg-panel border border-white/10 rounded-md px-3 py-2.5 text-sm text-text-secondary focus:outline-none focus:border-gold cursor-pointer flex-shrink-0"
+            className="h-12 min-w-[160px] bg-bg-panel border border-white/10 rounded-md px-3 text-sm text-text-secondary focus:outline-none focus:border-gold cursor-pointer flex-shrink-0"
             style={{ backgroundColor: 'hsl(var(--color-bg-panel))' }}
           >
             <option value="">Default Sorting</option>
@@ -193,7 +193,7 @@ export default function Products({ setSelectedProductSlug, setActivePage, addToC
               setActiveSearch('');
               setSortOption('');
             }}
-            className="btn btn-gold mt-6"
+            className="btn btn-gold h-12 mt-6"
             style={{ backgroundColor: 'hsl(var(--color-primary-gold))', color: 'hsl(var(--color-bg-dark))' }}
           >
             Show All Products

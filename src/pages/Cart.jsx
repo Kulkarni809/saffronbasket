@@ -69,9 +69,9 @@ export default function Cart({ cart, updateCartQuantity, removeFromCart, setActi
               Explore the rich organic saffron, golden mountain shilajit, and wild sun-dried nuts of Afghanistan to start shopping.
             </p>
           </div>
-          <button 
+          <button
             onClick={() => setActivePage('products')}
-            className="btn btn-gold px-8 py-3.5"
+            className="btn btn-gold h-12 px-8"
             style={{ backgroundColor: 'hsl(var(--color-primary-gold))', color: 'hsl(var(--color-bg-dark))' }}
           >
             Go to Products Catalog
@@ -232,13 +232,13 @@ export default function Cart({ cart, updateCartQuantity, removeFromCart, setActi
             </div>
 
             {/* CTA checkout button */}
-            <button 
+            <button
               onClick={handleCheckoutClick}
-              className="btn btn-gold w-full py-4 px-8 animate-pulse-gold"
+              className="btn btn-gold h-12 w-full animate-pulse-gold"
               style={{ backgroundColor: 'hsl(var(--color-primary-gold))', color: 'hsl(var(--color-bg-dark))' }}
             >
               Proceed to Secure Checkout
-              <ArrowRight className="w-4.5 h-4.5" />
+              <ArrowRight className="w-4 h-4" />
             </button>
 
             {/* Secure indicator */}
@@ -253,16 +253,16 @@ export default function Cart({ cart, updateCartQuantity, removeFromCart, setActi
               <Tag className="w-4 h-4 text-gold" style={{ color: 'hsl(var(--color-primary-gold))' }} /> Apply Promo Code
             </h4>
             <form onSubmit={handleApplyCoupon} className="flex gap-2">
-              <input 
-                type="text" 
+              <input
+                type="text"
                 placeholder="SAFFRON10 or AFGHAN20"
                 value={coupon}
                 onChange={(e) => setCoupon(e.target.value)}
-                className="w-full bg-white/5 border border-white/10 rounded-md px-3 py-2 text-xs text-text-primary focus:outline-none focus:border-gold"
+                className="input-field flex-1"
               />
               <button
                 type="submit"
-                className="btn btn-secondary px-4 py-2 text-xs whitespace-nowrap flex-shrink-0"
+                className="btn btn-secondary h-12 px-4 text-xs whitespace-nowrap flex-shrink-0"
               >
                 Apply
               </button>
